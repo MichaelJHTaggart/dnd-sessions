@@ -1,0 +1,68 @@
+---
+import Layout from '../layouts/Layout.astro';
+import ThemeSelector from '../components/ThemeSelector.astro';
+import SessionCard from '../components/SessionCard.astro';
+
+const sessions = [
+  {
+    title: "The Beginning of Our Journey",
+    date: "2025-01-15",
+    summary: "Our party met in the Tavern of the Last Home...",
+    sessionNumber: 1
+  },
+  {
+    title: "Into the Dark Forest",
+    date: "2025-01-22",
+    summary: "Venturing deep into the Misty Woods...",
+    sessionNumber: 2
+  }
+];
+---
+
+<Layout title="DnD Session Chronicles">
+  <main class="container">
+    <h1 class="title">DnD Session Chronicles</h1>
+    <ThemeSelector />
+    
+    <div class="sessions-grid">
+      {sessions.map(session => (
+        <SessionCard {...session} />
+      ))}
+    </div>
+  </main>
+</Layout>
+
+<style>
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.title {
+  font-size: 4rem;
+  text-align: center;
+  color: var(--accent-color);
+  margin: 2rem 0;
+  text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  animation: glow 2s ease-in-out infinite alternate;
+}
+
+.sessions-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 400px));
+  gap: 2rem;
+  justify-content: center;
+  padding: 2rem;
+}
+
+@keyframes glow {
+  from {
+    text-shadow: 0 0 10px var(--accent-color);
+  }
+  to {
+    text-shadow: 0 0 20px var(--accent-color),
+                 0 0 30px var(--accent-color);
+  }
+}
+</style>

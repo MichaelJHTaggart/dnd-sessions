@@ -1,0 +1,48 @@
+---
+const themes = [
+  { id: 'wizard', icon: '🧙‍♂️' },
+  { id: 'ranger', icon: '🏹' },
+  { id: 'druid', icon: '🌿' },
+  { id: 'sorcerer', icon: '✨' },
+  { id: 'dragonborn', icon: '🐲' },
+  { id: 'vampire', icon: '🧛' },
+  { id: 'wereraven', icon: '🦅' }
+];
+---
+
+<div class="theme-icons">
+  {themes.map(theme => (
+    <button
+      class="theme-icon"
+      data-theme={theme.id}
+      onclick={`document.documentElement.setAttribute('data-theme', '${theme.id}')`}
+      title={theme.id}
+    >
+      {theme.icon}
+    </button>
+  ))}
+</div>
+
+<style>
+.theme-icons {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: center;
+  padding: 1rem;
+}
+
+.theme-icon {
+  font-size: 1.5rem;
+  padding: 0.5rem;
+  border: 2px solid var(--accent-color);
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.5);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.theme-icon:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 15px var(--accent-color);
+}
+</style>

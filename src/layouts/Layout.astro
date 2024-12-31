@@ -1,0 +1,61 @@
+---
+import '@fontsource/medievalsharp';
+import '@fontsource/im-fell-english';
+import '../styles/themes.css';
+
+interface Props {
+  title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="DnD Session Chronicles" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>{title}</title>
+  </head>
+  <body>
+    <div class="background-overlay"></div>
+    <slot />
+  </body>
+</html>
+
+<style is:global>
+:root {
+  --font-family: 'MedievalSharp', cursive;
+  --text-font: 'IM Fell English', serif;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  background-color: var(--primary-color);
+  color: var(--text-color);
+  font-family: var(--text-font);
+  position: relative;
+}
+
+.background-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: var(--background-image);
+  background-size: cover;
+  background-position: center;
+  opacity: 0.15;
+  z-index: -1;
+  pointer-events: none;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-family);
+}
+</style>
